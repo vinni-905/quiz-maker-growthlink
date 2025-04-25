@@ -1,15 +1,29 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDQJvwl0IfYMNRdD7_wOOpaIIzDREo-MLo",
-  authDomain: "quizmaker-c2b8f.firebaseapp.com",
-  projectId: "quizmaker-c2b8f",
-  storageBucket: "quizmaker-c2b8f.appspot.com",
-  messagingSenderId: "107801046082",
-  appId: "1:107801046082:web:59b4cac2c2ef5732f0d1db",
+  apiKey: "YOUR_FIREBASE_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID",
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const provider = new GoogleAuthProvider();
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+// Google Sign-In Function
+export const googleSignIn = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    console.log('User signed in:', user);
+    // You can also store user data in localStorage or Firebase if needed
+  } catch (error) {
+    console.error("Error during Google sign-in:", error);
+  }
+};

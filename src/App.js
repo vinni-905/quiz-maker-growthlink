@@ -1,26 +1,22 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage'; // Make sure to use HomePage consistently
-import Navbar from './components/Navbar';
-import QuizPage from './components/QuizPage';
-import ResultPage from './components/ResultPage';
-import LeaderboardPage from './components/LeaderboardPage';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 import Questions from './components/Questions';
+import QuizPage from './components/QuizPage';
+import LeaderboardPage from './components/LeaderboardPage';
 
 function App() {
   return (
     <Router>
-      <Navbar /> {/* Navbar at the top */}
-      <div className="mt-16"> {/* To avoid navbar overlap */}
-        <Routes>
-          <Route path="/" element={<HomePage />} /> {/* Use HomePage component name here */}
-          <Route path="/quiz" element={<QuizPage />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/result" element={<ResultPage />} />
-          {/* Add any other routes if necessary */}
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/questions" element={<Questions />} />
+        <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
+        {/* You can add an improvement route later if needed */}
+      </Routes>
     </Router>
   );
 }
