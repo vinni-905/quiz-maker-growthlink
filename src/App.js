@@ -1,21 +1,25 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
-import Questions from './components/Questions';
 import QuizPage from './components/QuizPage';
-import LeaderboardPage from './components/LeaderboardPage';
+// Import QuizPage component
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Define the route for the LoginPage */}
         <Route path="/" element={<LoginPage />} />
+        
+        {/* Define the route for the HomePage */}
         <Route path="/home" element={<HomePage />} />
-        <Route path="/questions" element={<Questions />} />
+        
+        {/* Define the route for the QuizPage */}
         <Route path="/quiz" element={<QuizPage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
-        {/* You can add an improvement route later if needed */}
+        
+        {/* Add other routes if necessary, like QuestionsPage, LeaderboardPage, etc. */}
       </Routes>
     </Router>
   );
